@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Random color generator</title>
+    <style>
+        *{
+            box-sizing: border-box;
+            margin: none;
+            padding: none;
+        }
+
+        .container{
+            width: 100%;
+            height: 95vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .content{
+            display: flex;
+            flex-direction: column;
+            text-align: center;
+        }
+
+        #btn{
+            padding: 5px;
+            margin: 2px solid grey;
+            background-color: beige;
+            border-radius: 30px;
+        }
+
+        #btn:hover{
+            animation: radiate 0.65s infinite;
+        }
+
+        #color-code{
+            margin-top: 50px;
+            text-transform: uppercase;
+            font-weight: bolder;
+        }
+
+        @keyframes radiate {
+            0%{
+                box-shadow: 0px 0px 50px 5px rgb(117, 223, 244),0px 0px 50px 10px rgb(0, 140, 255),0px 0px 50px 15px rgb(164, 117, 244),0px 0px 50px 20px rgb(255, 0, 144),0px 0px 50px 25px rgb(215, 172, 172);
+                border-radius: 30px;
+                /* opacity: 1; */
+                position: relative;
+            }
+
+            100%{
+                box-shadow: 0px 0px 50px 5px rgb(255, 0, 0),0px 0px 50px 10px rgb(255, 221, 0),0px 0px 50px 15px rgb(4, 255, 0),0px 0px 50px 20px rgb(0, 255, 153),0px 0px 50px 25px rgb(0, 255, 255);
+                /* opacity: 0.5; */
+                border-radius: 30px;
+
+
+            }
+        }
+
+
+
+    </style>
+</head>
+<body> 
+    <div class="container">
+        <div class="content">
+            <button id="btn" onclick="generatecolor()">Change color</button>
+            <span id="color-code"></span>
+        </div>
+    </div>
+    <script>
+        let color_code = document.getElementById("color-code")
+        let color = "#"
+
+        let generatecolor = () => {
+            let units = "0123456789abcdef"
+            for (let i = 0; i<6; i++){
+                color = color + units[Math.floor(Math.random()*16)]
+            }
+            document.body.style.backgroundColor = color;
+            color_code.innerHTML = color;
+            color = "#"
+        };
+
+
+    </script>
+</body>
+</html>
